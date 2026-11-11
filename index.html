@@ -52,9 +52,10 @@
   .hint{
     display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;
     background:rgba(255,255,255,.75);border:1.5px dashed #F5CDD6;
-    border-radius:999px;padding:8px 16px;font-size:12.5px;color:#8C7169;
+    border-radius:22px;padding:12px 18px;font-size:12.5px;color:#8C7169;
   }
   .hint b{color:#E77C98;font-weight:400}
+  .hint-tip{width:100%;font-size:11.5px;color:#B5A69E;padding-top:6px;margin-top:2px;border-top:1px dashed #F5CDD6}
   .hint-lead{width:100%;font-weight:700;color:#C9788C}
 
   .cal{
@@ -357,8 +358,9 @@
     <p class="sub">2026 박규원 생일 이벤트 · 혜화역 · 11.11 – 11.22</p>
     <div class="hint">
       <span class="hint-lead">📅 달력 스케쥴 표를</span>
-      <span>👆 <b>터치</b> 해시태그 보기</span>
-      <span>✊ <b>꾸욱</b> @아이디 복사</span>
+      <span><b>터치</b> 해시태그 보기</span><span style="color:#D9A0B0;font-weight:700">·</span>
+      <span><b>꾸욱</b> @아이디 복사</span>
+      <span class="hint-tip">📱 이 페이지를 홈 화면에 추가한 뒤 사용하면 편해요</span>
     </div>
   </header>
 
@@ -882,7 +884,7 @@
     body.querySelector('#vMinus').addEventListener('click', function(){ setV(ev, getV(ev)-1); });
     body.querySelector('#copyId').addEventListener('click', function(){ copyOrWarn(ev.id, ev.id+' 복사 완료 ✨'); });
     body.querySelector('#copyTags').addEventListener('click', function(){
-      copyOrWarn(ev.tags.join(' '), '해시태그 '+ev.tags.length+'개 복사 완료 💕');
+      copyOrWarn(ev.tags.join('\n'), '해시태그 '+ev.tags.length+'개 복사 완료 💕');
     });
     body.querySelectorAll('.tags button').forEach(function(b){
       b.addEventListener('click', function(){
