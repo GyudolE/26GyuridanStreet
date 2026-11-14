@@ -198,6 +198,7 @@
   }
   .maplink:active{transform:scale(.98)}
   .maplink b{font-weight:700}
+  .maplink .mtxt small{display:block;font-size:11.5px;color:#5E9C72;margin-top:2px}
   .maplink .nv{
     width:26px;height:26px;border-radius:8px;background:#03C75A;color:#fff;flex:none;
     display:grid;place-items:center;font-weight:900;font-size:14px;font-family:Arial,sans-serif;
@@ -430,7 +431,7 @@
      note:'※ Red는 아이디가 따로 없어서 감성규원전 Green 계정으로 넣어뒀어요'},
     {venue:'에델바이스', h:{d:'10:00–20:00',0:'14:00–18:00'}, name:"KW's Shining Garden", id:'@blossoms_2_star', s:15, e:17, color:'sky', emoji:'⭐',
      tags:['#20261117_별에게_닿는_꽃','#2026_Congrats_on_Kyuwon_Birthday']},
-    {venue:'포토랩플러스', h:{d:'24시간'}, name:'별사탕 1117스푼', id:'@ST4RCANDY_1117', s:15, e:17, color:'butter', emoji:'🍬',
+    {venue:'포토랩플러스', h:{d:'24시간'}, mapUrl:'https://naver.me/GLhxfPdc', mapName:'투썸플레이스 대학로아트점', mapAddr:'서울 종로구 동숭길 123 1층', name:'별사탕 1117스푼', id:'@ST4RCANDY_1117', s:15, e:17, color:'butter', emoji:'🍬',
      tags:['#규원_생일이라는_이유로','#박규원짱스타캔디']},
     {venue:'지구캣', h:{d:'10:00–20:00',6:'11:00–20:00',0:'12:00–19:00'}, hnote:'라스트오더는 마감 30분 전', name:'𝕂𝕐𝕌𝕎𝕆ℕ 𝔹𝔸𝕊𝔼𝔹𝔸𝕃𝕃 ℂ𝕃𝕌𝔹🧢', id:'@lov2pkw', s:15, e:22, color:'aqua', emoji:'⚾',
      tags:['#HAPPY_KYUWON_DAY','#규원이네_야구부_모집중']},
@@ -866,8 +867,12 @@
         '<div class="stepper"><button id="vMinus" aria-label="방문 횟수 빼기" style="color:'+col[1]+'"'+(getV(ev)?'':' disabled')+'>−</button>'+
         '<button id="vPlus" aria-label="방문 횟수 더하기" style="color:#fff;background:'+col[1]+'">+</button></div>'+
       '</div>'+
-      '<a class="maplink" href="https://map.naver.com/p/search/'+encodeURIComponent(ev.map||('혜화역 '+ev.venue))+'" target="_blank" rel="noopener">'+
-        '<span class="nv">N</span><span>네이버 지도 · 혜화역 <b>'+esc(ev.venue)+'</b></span><span class="go">›</span></a>'+
+      '<a class="maplink" href="'+(ev.mapUrl||('https://map.naver.com/p/search/'+encodeURIComponent(ev.map||('혜화역 '+ev.venue))))+'" target="_blank" rel="noopener">'+
+        '<span class="nv">N</span>'+
+        (ev.mapName
+          ? '<span class="mtxt">네이버 지도 · <b>'+esc(ev.mapName)+'</b>'+(ev.mapAddr?'<small>'+esc(ev.mapAddr)+'</small>':'')+'</span>'
+          : '<span>네이버 지도 · 혜화역 <b>'+esc(ev.venue)+'</b></span>')+
+        '<span class="go">›</span></a>'+
       '<div class="idrow"><span class="id" style="color:'+col[1]+'">'+esc(ev.id)+'</span><button class="mini" id="copyId">아이디 복사</button></div>'+
       (ev.note?'<div class="note">'+esc(ev.note)+'</div>':'')+
       '<div class="tagbox" style="background:'+col[2]+';box-shadow:inset 0 0 0 2px '+col[0]+'">'+
